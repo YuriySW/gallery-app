@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo {
+height: 40px;
+}
+
+
+
+.link:hover .text {
+  color: #3b82f6;
+}

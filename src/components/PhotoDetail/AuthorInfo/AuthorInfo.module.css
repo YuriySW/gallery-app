@@ -1,0 +1,29 @@
+.author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.name:hover {
+  color: #3b82f6;
+}
+
+.username {
+  font-size: 14px;
+  color: #6b7280;
+}

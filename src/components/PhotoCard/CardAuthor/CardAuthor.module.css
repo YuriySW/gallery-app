@@ -1,0 +1,43 @@
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.externalIcon {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.name:hover .externalIcon {
+  opacity: 1;
+}
+
+.name:hover {
+  color: #3b82f6;
+}
+
+.username {
+  font-size: 12px;
+  color: #6b7280;
+}
