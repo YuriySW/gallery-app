@@ -6,6 +6,9 @@ const API_URL = 'https://api.unsplash.com';
 const AUTH_URL = 'https://unsplash.com/oauth';
 const TOKEN_URL = 'https://unsplash.com/oauth/token';
 
+// Динамический REDIRECT_URI без фрагмента
+const REDIRECT_URI = window.location.origin + window.location.pathname.split('/auth')[0].replace(/\/$/, '') + '/auth';
+
 export const unsplashAPI = axios.create({
   baseURL: API_URL,
   headers: {
@@ -25,7 +28,7 @@ export const createAuthAPI = (token) =>
 export const getAuthURL = () => {
   const url = new URL(`${AUTH_URL}/authorize`);
   url.searchParams.append('client_id', ACCESS_KEY);
-  url.searchParams.append('redirect_uri', process.env.REACT_APP_REDIRECT_URI);
+  url.searchParams.append('redirect_uri', REDIRECT_URI);
   url.searchParams.append('response_type', 'code');
   url.searchParams.append('scope', 'public read_user read_photos write_likes');
   return url.toString();
@@ -37,7 +40,7 @@ export const exchangeCodeForToken = async (code) => {
     const response = await axios.post(TOKEN_URL, {
       client_id: ACCESS_KEY,
       client_secret: SECRET_KEY,
-      redirect_uri: process.env.REACT_APP_REDIRECT_URI,
+      redirect_uri: REDIRECT_URI,
       code,
       grant_type: 'authorization_code',
     });

@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {setToken} from '../../store/auth/authSlice';
@@ -11,9 +11,13 @@ const AuthCallback = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  const isProcessing = useRef(false);
 
   useEffect(() => {
     const handleCallback = async () => {
+      if (isProcessing.current) return;
+      isProcessing.current = true;
+
       const params = new URLSearchParams(location.search);
       const code = params.get('code');
       const error = params.get('error');
