@@ -8,7 +8,6 @@ import {
 } from '../../store/photos/photosThunks';
 import {clearCurrentPhoto} from '../../store/photos/photosSlice';
 import {Button} from '../../UI/Button/Button';
-import {Preloader} from '../../UI/Preloader/Preloader';
 import {LikeButton} from './LikeButton/LikeButton';
 import {AuthorInfo} from './AuthorInfo/AuthorInfo';
 import {PhotoMeta} from './PhotoMeta/PhotoMeta';
@@ -56,7 +55,11 @@ const PhotoDetail = () => {
   };
 
   if (status === 'loading') {
-    return <Preloader />;
+    return (
+      <div className={style.loaderWrapper}>
+        <p className={style.loading}>Загрузка...</p>
+      </div>
+    );
   }
 
   if (status === 'error') {
@@ -75,7 +78,11 @@ const PhotoDetail = () => {
   return (
     <div className={style.container}>
       <div className={style.toolbar}>
-        <Button onClick={handleBack} variant="rounded" className={style.backBtn}>
+        <Button
+          onClick={handleBack}
+          variant="rounded"
+          className={style.backBtn}
+        >
           <Icon name="back" size={20} />
           Назад к ленте
         </Button>

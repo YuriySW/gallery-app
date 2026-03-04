@@ -85,3 +85,28 @@
 .retryBtn:active {
   transform: translateY(1px);
 }
+
+.loaderWrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Анимация */
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

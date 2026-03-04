@@ -7,7 +7,11 @@ const PhotoGrid = () => {
   const {photos, status, error, hasMore, lastPhotoRef, retry} = usePhotosGrid();
 
   if (status === 'loading' && photos.length === 0) {
-    return <Preloader />;
+    return (
+      <div className={style.loaderWrapper}>
+        <p className={style.loading}>Загрузка...</p>
+      </div>
+    );
   }
 
   if (status === 'error' && photos.length === 0) {
